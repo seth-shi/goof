@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/seth-shi/goof/utils"
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"
@@ -47,9 +48,11 @@ func initProject(context *cli.Context) error {
 		return err
 	}
 
-	log.Println("publish files to:"+ dest)
 
-	output := context.Bool("output")
+	log := utils.GetLogInstance()
+	log.Info("publish files to:" + dest)
+
+	isOutput := context.Bool("output")
 
 	// 开始 copy 文件
 	for _, file := range GetFrameworkFiles() {
@@ -60,14 +63,17 @@ func initProject(context *cli.Context) error {
 
 			err := os.Mkdir(tmpName, os.ModePerm)
 
-			if output {
+			if isOutput {
 
 				if err == nil {
-					log.Println("publish success:" + tmpName)
+					log.Info("publish success:" + tmpName)
 				} else {
-					log.Println(err.Error())
+					log.Error(err.Error())
 				}
 			}
+		} else {
+
+			// file content write
 		}
 	}
 

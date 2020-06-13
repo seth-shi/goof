@@ -6,8 +6,10 @@
 
 ## 安装
 * `go mod`安装
+
 `go get github.com/seth-shi/goof`
 * 安装之后可使用全局命令初始化项目
+
 `goof init -output`
 
 ## TODO
