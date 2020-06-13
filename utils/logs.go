@@ -1,6 +1,9 @@
 package utils
 
-import "github.com/fatih/color"
+import (
+	"github.com/fatih/color"
+	"os"
+)
 
 type Log struct {}
 
@@ -24,4 +27,10 @@ func (l *Log) Error(msg string) {
 func (l *Log) Waring(msg string) {
 
 	color.Yellow(msg)
+}
+
+func (l *Log) ErrorFatal(msg string)  {
+
+	color.Red(msg)
+	os.Exit(1)
 }

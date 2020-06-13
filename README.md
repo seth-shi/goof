@@ -12,4 +12,8 @@
 
 `goof init -output`
 
+## Dev
+* 打包项目目录
+`pkger -o framework`
+
 ## TODO

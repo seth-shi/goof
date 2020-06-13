@@ -1,10 +1,15 @@
 package main
 
 import (
+	"github.com/markbates/pkger"
 	"github.com/seth-shi/goof/utils"
 	"github.com/urfave/cli/v2"
-	"log"
+	"io/ioutil"
 	"os"
+)
+
+var (
+	log = utils.GetLogInstance()
 )
 
 func main() {
@@ -33,10 +38,9 @@ func main() {
 	}
 
 	// set options
-
-	err := app.Run(os.Args)
-	if err != nil {
-		log.Fatal(err)
+	runError := app.Run(os.Args)
+	if runError != nil {
+		log.ErrorFatal(runError.Error())
 	}
 }
 
@@ -49,33 +53,49 @@ func initProject(context *cli.Context) error {
 	}
 
 
-	log := utils.GetLogInstance()
 	log.Info("publish files to:" + dest)
+
 
 	isOutput := context.Bool("output")
 
-	// 开始 copy 文件
-	for _, file := range GetFrameworkFiles() {
+	err = pkger.Walk("/framework", func(path string, info os.FileInfo, err error) error {
 
-		tmpName := dest + "/" + file.Name()
+		if err != nil {
+			return err
+		}
 
-		if file.IsDir() {
+		if info.IsDir() {
 
-			err := os.Mkdir(tmpName, os.ModePerm)
+			err = os.Mkdir(info.Name(), info.Mode())
+			if err != nil {
+				if isOutput {
+					log.Error(err.Error())
+				}
+			} else {
+				log.Info("publish to:" + info.Name())
+			}
 
-			if isOutput {
+		} else {
 
-				if err == nil {
-					log.Info("publish success:" + tmpName)
-				} else {
+			f, err := pkger.Open(info.Name())
+			if err != nil {
+				log.ErrorFatal(err.Error())
+			}
+
+			contents, err := ioutil.ReadAll(f)
+			if err != nil {
+				log.Error(err.Error())
+			} else {
+				err := ioutil.WriteFile(dest + "/" + info.Name(), contents, info.Mode())
+				if err != nil {
 					log.Error(err.Error())
 				}
 			}
-		} else {
-
-			// file content write
 		}
-	}
+
+		return nil
+	})
+
 
 	return err
 }
