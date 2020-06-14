@@ -1,3 +1,5 @@
+//go:generate go-bindata -prefix framework -o framework.go framework/...
+
 package main
 
 import (
@@ -10,7 +12,7 @@ var (
 	log = utils.GetLogInstance()
 )
 
-func main() {
+func mai1n() {
 
 
 	app := &cli.App{
