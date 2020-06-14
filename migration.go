@@ -32,14 +32,23 @@ type MigrationModel struct {
 // name => YYYY_mm_dd_HH_mm_ss_action_table_
 func decodeMigrationName(name string) (MigrationModel, error) {
 
+	var model MigrationModel
+	model.CreatedAt = time.Now()
+
 	if isOk, _ := regexp.MatchString(`\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}`, name); isOk {
 
+		at, err := time.Parse(model.getTimeFormat(), name[0:19])
+		if err != nil {
+			return model, err
+		}
+
+		model.CreatedAt = at
 		name = name[20:]
 	}
 
-	var model MigrationModel
+	// trim .go ext name
+	name = strings.Split(name, ".")[0]
 	model.Table = name
-	model.CreatedAt = time.Now()
 
 	chunkStr := strings.Split(name, "_")
 	if len(chunkStr) == 0 {
@@ -83,7 +92,12 @@ func (m MigrationModel) getStructName () string  {
 
 func (m MigrationModel) getFileName () string  {
 
-	return m.CreatedAt.Format("2006_01_02_15_04_05") + "_" + strcase.ToSnake(m.Table) + ".go"
+	return m.CreatedAt.Format(m.getTimeFormat()) + "_" + strcase.ToSnake(m.Table) + ".go"
+}
+
+func (MigrationModel) getTimeFormat() string {
+
+	return "2006_01_02_15_04_05"
 }
 
 func (m MigrationModel) createMigrationTemplate() string {

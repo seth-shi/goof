@@ -3,6 +3,8 @@
 package main
 
 import (
+	"fmt"
+	"github.com/modern-go/reflect2"
 	"github.com/seth-shi/goof/utils"
 	"github.com/urfave/cli/v2"
 	"io/ioutil"
@@ -154,10 +156,29 @@ func makeMigration(context *cli.Context) error {
 func databaseMigrate(context *cli.Context) error {
 
 	// database/migrations path all files migrate
-	rootPath := workDir + "/database/migrations"
+	rootPath := "database/migrations"
+
+	log.Info("start migrate")
 
 	return filepath.Walk(rootPath, func(path string, info os.FileInfo, err error) error {
 
+		if info == nil {
+			return err
+		}
+
+		if info.IsDir() {
+			return nil
+		}
+
+		model, err := decodeMigrationName(info.Name())
+		if err != nil {
+			return err
+		}
+
+		// 得到结构体的名字
+		structName := model.getStructName()
+		valType := reflect2.TypeByName("migrations." + structName)
+		fmt.Println("migrations." + structName, valType.String())
 
 		return nil
 	})

@@ -1,14 +1,14 @@
+
 package migrations
 
-
-type CreateUsersTable struct {
-
-}
-
-func (CreateUsersTable) up()  {
+type CreateUsersTable_20200614135651 struct {
 
 }
 
-func (CreateUsersTable) down()  {
+func (CreateUsersTable_20200614135651) up()  {
+
+}
+
+func (CreateUsersTable_20200614135651) down()  {
 
 }

@@ -2,8 +2,8 @@
 // sources:
 // framework/commands/console.go
 // framework/config/app.go
-// framework/database/data/users.json
-// framework/database/migrations/2006_01_02_15_04_05__create_users_table.go
+// framework/database/data/migrations_map.go
+// framework/database/migrations/2006_01_02_15_04_05_create_users_table.go
 // framework/database/seeds/seeder.go
 // framework/http/controllers/user.go
 // framework/http/requests/user.go
@@ -134,7 +134,7 @@ var _databaseDataUsersJson = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x8
 func databaseDataUsersJsonBytes() ([]byte, error) {
 	return bindataRead(
 		_databaseDataUsersJson,
-		"database/data/users.json",
+		"database/data/migrations_map.go",
 	)
 }
 
@@ -144,7 +144,7 @@ func databaseDataUsersJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "database/data/users.json", size: 3, mode: os.FileMode(438), modTime: time.Unix(1592100146, 0)}
+	info := bindataFileInfo{name: "database/data/migrations_map.go", size: 3, mode: os.FileMode(438), modTime: time.Unix(1592100146, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -154,7 +154,7 @@ var _databaseMigrations2006_01_02_15_04_05__create_users_tableGo = []byte("\x1f\
 func databaseMigrations2006_01_02_15_04_05__create_users_tableGoBytes() ([]byte, error) {
 	return bindataRead(
 		_databaseMigrations2006_01_02_15_04_05__create_users_tableGo,
-		"database/migrations/2006_01_02_15_04_05__create_users_table.go",
+		"database/migrations/2006_01_02_15_04_05_create_users_table.go",
 	)
 }
 
@@ -164,7 +164,7 @@ func databaseMigrations2006_01_02_15_04_05__create_users_tableGo() (*asset, erro
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "database/migrations/2006_01_02_15_04_05__create_users_table.go", size: 37, mode: os.FileMode(438), modTime: time.Unix(1592100558, 0)}
+	info := bindataFileInfo{name: "database/migrations/2006_01_02_15_04_05_create_users_table.go", size: 37, mode: os.FileMode(438), modTime: time.Unix(1592100558, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -403,8 +403,8 @@ func AssetNames() []string {
 var _bindata = map[string]func() (*asset, error){
 	"commands/console.go":                                            commandsConsoleGo,
 	"config/app.go":                                                  configAppGo,
-	"database/data/users.json":                                       databaseDataUsersJson,
-	"database/migrations/2006_01_02_15_04_05__create_users_table.go": databaseMigrations2006_01_02_15_04_05__create_users_tableGo,
+	"database/data/migrations_map.go":                                       databaseDataUsersJson,
+	"database/migrations/2006_01_02_15_04_05_create_users_table.go": databaseMigrations2006_01_02_15_04_05__create_users_tableGo,
 	"database/seeds/seeder.go":                                       databaseSeedsSeederGo,
 	"http/controllers/user.go":                                       httpControllersUserGo,
 	"http/requests/user.go":                                          httpRequestsUserGo,
@@ -465,10 +465,10 @@ var _bintree = &bintree{nil, map[string]*bintree{
 	}},
 	"database": &bintree{nil, map[string]*bintree{
 		"data": &bintree{nil, map[string]*bintree{
-			"users.json": &bintree{databaseDataUsersJson, map[string]*bintree{}},
+			"migrations_map.go": &bintree{databaseDataUsersJson, map[string]*bintree{}},
 		}},
 		"migrations": &bintree{nil, map[string]*bintree{
-			"2006_01_02_15_04_05__create_users_table.go": &bintree{databaseMigrations2006_01_02_15_04_05__create_users_tableGo, map[string]*bintree{}},
+			"2006_01_02_15_04_05_create_users_table.go": &bintree{databaseMigrations2006_01_02_15_04_05__create_users_tableGo, map[string]*bintree{}},
 		}},
 		"seeds": &bintree{nil, map[string]*bintree{
 			"seeder.go": &bintree{databaseSeedsSeederGo, map[string]*bintree{}},
