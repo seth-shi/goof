@@ -13,7 +13,7 @@
 `goof init -output`
 
 ## Dev
-* 打包项目目录
-`pkger -o framework`
+* 打包项目骨架目录
+`esc -o framework.go framework`
 
 ## TODO

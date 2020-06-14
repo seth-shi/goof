@@ -1,10 +1,8 @@
 package main
 
 import (
-	"github.com/markbates/pkger"
 	"github.com/seth-shi/goof/utils"
 	"github.com/urfave/cli/v2"
-	"io/ioutil"
 	"os"
 )
 
@@ -13,6 +11,7 @@ var (
 )
 
 func main() {
+
 
 	app := &cli.App{
 		Name: "goof",
@@ -56,46 +55,7 @@ func initProject(context *cli.Context) error {
 	log.Info("publish files to:" + dest)
 
 
-	isOutput := context.Bool("output")
-
-	err = pkger.Walk("/framework", func(path string, info os.FileInfo, err error) error {
-
-		if err != nil {
-			return err
-		}
-
-		if info.IsDir() {
-
-			err = os.Mkdir(info.Name(), info.Mode())
-			if err != nil {
-				if isOutput {
-					log.Error(err.Error())
-				}
-			} else {
-				log.Info("publish to:" + info.Name())
-			}
-
-		} else {
-
-			f, err := pkger.Open(info.Name())
-			if err != nil {
-				log.ErrorFatal(err.Error())
-			}
-
-			contents, err := ioutil.ReadAll(f)
-			if err != nil {
-				log.Error(err.Error())
-			} else {
-				err := ioutil.WriteFile(dest + "/" + info.Name(), contents, info.Mode())
-				if err != nil {
-					log.Error(err.Error())
-				}
-			}
-		}
-
-		return nil
-	})
-
+	//isOutput := context.Bool("output")
 
 	return err
 }
