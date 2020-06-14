@@ -1,5 +1,14 @@
 package migrations
 
-func init()  {
+
+type CreateUsersTable struct {
+
+}
+
+func (CreateUsersTable) up()  {
+
+}
+
+func (CreateUsersTable) down()  {
 
 }
