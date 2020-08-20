@@ -4,13 +4,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/modern-go/reflect2"
 	"github.com/seth-shi/goof/utils"
 	"github.com/urfave/cli/v2"
 	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
+	"time"
 )
 
 var (
@@ -32,7 +32,7 @@ func main() {
 
 	app := &cli.App{
 		Name: "goof",
-		Version: "v1.0.0",
+		Version: "v1.0.1",
 		Usage: "development of project foundation scaffolding",
 		UsageText: "goof [action] [arguments...]",
 		Action: func(c *cli.Context) error {
@@ -128,24 +128,11 @@ func makeMigration(context *cli.Context) error {
 	// generate
 	table := context.Args().First()
 
-	model, err := decodeMigrationName(table)
-	if err != nil {
-		return err
-	}
+	now := time.Now().Format("20060102150405")
+	packName := table + now
+	filename := "database/migrations/" + now + table + ".go"
 
-	filename := "database/migrations/" + model.getFileName()
-	var contents string
-	switch model.Action {
-
-	case MigrationCreateAction:
-		contents = model.createMigrationTemplate()
-	case MigrationUpdateAction:
-		contents = model.updateMigrationTemplate()
-	case MigrationDeleteAction:
-		contents = model.deleteMigrationTemplate()
-	}
-
-	err = ioutil.WriteFile(filename, []byte(contents), os.ModePerm)
+	err := ioutil.WriteFile(filename, []byte(stub(packName)), os.ModePerm)
 	if err == nil {
 		log.Info("publish migration to:" + filename)
 	}
@@ -170,16 +157,36 @@ func databaseMigrate(context *cli.Context) error {
 			return nil
 		}
 
-		model, err := decodeMigrationName(info.Name())
-		if err != nil {
-			return err
-		}
-
-		// 得到结构体的名字
-		structName := model.getStructName()
-		valType := reflect2.TypeByName("migrations." + structName)
-		fmt.Println("migrations." + structName, valType.String())
 
 		return nil
 	})
+}
+
+
+
+func stub(packName string) string {
+
+	stub := `package %s
+
+import (
+	"github.com/jinzhu/gorm"
+	"github.com/seth-shi/goof"
+)
+
+func init()  {
+
+	goof.RegisterMigrate(Up, Down)
+}
+
+
+func Up(db gorm.DB)  {
+	
+}
+
+func Down(db gorm.DB) {
+	
+}
+`
+
+	return fmt.Sprintf(stub, packName)
 }

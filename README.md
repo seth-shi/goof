@@ -14,6 +14,7 @@
 
 ## Dev
 * 打包项目骨架目录
+`go get -u github.com/mjibson/esc`
 `esc -o framework.go framework`
 
 ## TODO
