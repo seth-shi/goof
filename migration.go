@@ -5,6 +5,7 @@ import (
 	"github.com/urfave/cli/v2"
 	"io/ioutil"
 	"os"
+	"path"
 	"time"
 )
 
@@ -14,15 +15,23 @@ import (
 // make migration files
 func makeMigration(context *cli.Context) error {
 
+	var err error
 	// generate
 	table := context.Args().First()
 
 	now := time.Now().Format("20060102150405")
 
 	alias := fmt.Sprintf("%s_%s", table, now)
-	filename := fmt.Sprintf("database/migrations/%s_%s.go", now, table)
+	filename := fmt.Sprintf("%s/%s_%s.go", env.migrationDir, now, table)
 
-	err := ioutil.WriteFile(filename, []byte(stub(alias)), os.ModePerm)
+	dir := path.Dir(filename)
+	if _, err = os.Stat(dir); os.IsNotExist(err) {
+		if err = os.MkdirAll(dir, os.ModePerm); err != nil {
+			return err
+		}
+	}
+
+	err = ioutil.WriteFile(filename, []byte(stub(alias)), os.ModePerm)
 	if err == nil {
 		log.Info("publish migration to:" + filename)
 	}
@@ -36,7 +45,7 @@ func stub(alias string) string {
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/seth-shi/goof/goof"
+	"github.com/seth-shi/goof/runtime"
 )
 
 func init()  {

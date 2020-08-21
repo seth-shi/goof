@@ -10,7 +10,7 @@ import (
 // init project, publish foundation files
 func initProject(context *cli.Context) error {
 
-	log.Info("publish files to:" + workDir)
+	log.Info("publish files to:" + env.migrationDir)
 
 	isOutput := context.Bool("output")
 	names := AssetNames()
