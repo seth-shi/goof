@@ -27,28 +27,28 @@ func RegisterMigrate(up, down func(db *gorm.DB)) {
 	registerMigrations[filepath.Base(filename)] = struct{ Up, Down func(db *gorm.DB) }{Up: up, Down: down}
 }
 
-func LoadMigrationFiles(dirPath string) ([]string, error) {
+func LoadMigrationFiles(dirPath string) (error) {
 
 	if _, err := os.Stat(dirPath); os.IsNotExist(err) {
-		return nil, fmt.Errorf("%s directory does not exists", dirPath)
+		return fmt.Errorf("%s directory does not exists", dirPath)
 	}
 
 	files, err := filepath.Glob(dirPath + "/**.go")
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	for _, file := range files {
 
 		base := filepath.Base(file)
 		if _, exists := registerMigrations[base]; ! exists {
-			return []string{}, ErrNotRegisterMigration
+			return ErrNotRegisterMigration
 		}
 
 		fileMigrations = append(fileMigrations, base)
 	}
 
-	return fileMigrations, nil
+	return nil
 }
 
 func migratedFiles() (files []string, err error) {
@@ -85,7 +85,7 @@ func migrate() error {
 
 	diffFiles := utils.Intersect(fileMigrations, dbMigrations)
 	if len(diffFiles) == 0 {
-		fmt.Println("Nothing to migrate.")
+		utils.GetLogInstance().Info("Nothing to migrate.")
 		return nil
 	}
 
@@ -113,7 +113,47 @@ func migrate() error {
 			Migration: file,
 			Batch: maxBatch,
 		})
+		utils.GetLogInstance().Info("Migrated:" + file)
 	}
 
-	return err
+	return nil
+}
+
+func migrateRollback() error {
+
+	var err error
+	var maxBatch uint
+
+	maxBatch, err = migrationMaxBatch()
+	if err != nil {
+		return err
+	}
+
+	var rows []migration
+	err = orm.Where("batch = ?", maxBatch).Order("id desc", true).Find(&rows).Error
+	if err != nil {
+		return err
+	}
+
+	orm.Begin()
+	defer func() {
+
+		if e := recover(); e != nil {
+			orm.Rollback()
+		} else {
+			orm.Commit()
+		}
+	}()
+	// if row if exists
+	for _, row := range rows {
+
+		if handle, exists := registerMigrations[row.Migration]; exists {
+
+			handle.Down(orm)
+			orm.Delete(row)
+			utils.GetLogInstance().Info("Rolled back:" + row.Migration)
+		}
+	}
+
+	return nil
 }

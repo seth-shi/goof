@@ -9,22 +9,28 @@ import (
 var orm *gorm.DB
 var commands = map[string]func() error{
 	"migrate": migrate,
-	"migrate:rollback": func() error {
-
-		return nil
-	},
+	"migrate:rollback": migrateRollback,
 }
 
-func Boot(db *gorm.DB) {
+func Boot(db *gorm.DB) error {
 
 	orm = db
 
+	dir := os.Getenv("MIGRATION_DIR")
+	if len(dir) == 0 {
+		dir = "database/migrations"
+	}
 	// load migration files
-	LoadMigrationFiles("./database/migrations")
+	err := LoadMigrationFiles(dir)
+	if err != nil {
+		return err
+	}
 
 	// here register command,
 	// Call to the goof
 	registerGoofCommand()
+
+	return nil
 }
 
 func registerGoofCommand() {
