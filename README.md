@@ -4,11 +4,13 @@
 * **数据库版本迁移**
 * 路由,控制器,服务分层
 
-## 安装
-* `go mod`安装
-
-`go get github.com/seth-shi/goof`
-* 安装之后可使用全局命令初始化项目
+## Star
+* 初始化`gomod`
+* `go mod init xxx`
+* 安装插件
+* `go get github.com/seth-shi/goof`
+* 初始化项目
+* `goof init`
 
 `goof init -output`
 
@@ -17,4 +19,3 @@
 `go get -u github.com/mjibson/esc`
 `esc -o framework.go framework`
 
-## TODO
