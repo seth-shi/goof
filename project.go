@@ -11,7 +11,7 @@ import (
 // init project, publish foundation files
 func initProject(context *cli.Context) error {
 
-	fmt.Println("publish files to:" + env.migrationDir)
+	fmt.Println("publish files to:" + env.workDir)
 
 	isOutput := context.Bool("output")
 
