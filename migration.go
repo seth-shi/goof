@@ -9,9 +9,6 @@ import (
 	"time"
 )
 
-
-
-
 // make migration files
 func makeMigration(context *cli.Context) error {
 
@@ -33,7 +30,7 @@ func makeMigration(context *cli.Context) error {
 
 	err = ioutil.WriteFile(filename, []byte(stub(alias)), os.ModePerm)
 	if err == nil {
-		log.Info("publish migration to:" + filename)
+		fmt.Println("publish migration to:" + filename)
 	}
 
 	return err

@@ -1,54 +1,49 @@
 package main
 
 import (
+	"fmt"
 	"github.com/urfave/cli/v2"
 	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 )
 
 // init project, publish foundation files
 func initProject(context *cli.Context) error {
 
-	log.Info("publish files to:" + env.migrationDir)
+	fmt.Println("publish files to:" + env.migrationDir)
 
 	isOutput := context.Bool("output")
-	names := AssetNames()
 
-	for _, name := range names {
+	for _, filename := range AssetNames() {
 
-		info, err := AssetInfo(name)
-		if err != nil && isOutput {
-			log.ErrorFatal(err.Error())
-		}
-
-		contents, err := Asset(name)
+		contents, err := Asset(filename)
 		if err != nil && isOutput {
 
-			log.ErrorFatal(err.Error())
+			fmt.Println(err.Error())
+			continue
 		}
 
-		dir := path.Dir(info.Name())
-		filename := info.Name()
-
+		dir := filepath.Dir(filename)
 		if dir != "." {
 			err := os.MkdirAll(dir, os.ModePerm)
 			if err != nil && isOutput {
-				log.Error(err.Error())
+				fmt.Println(err.Error())
+				continue
 			}
 		}
 
-		err = ioutil.WriteFile(filename, contents, info.Mode())
+		err = ioutil.WriteFile(filename, contents, 0755)
 		if isOutput {
 			if err != nil {
-				log.ErrorFatal(err.Error())
+				fmt.Println(err.Error())
 			} else {
-				log.Info("generate:" + info.Name())
+				fmt.Println("generate:" + filename)
 			}
 		}
 	}
 
-	log.Info("publish success")
+	fmt.Println("publish success")
 
 	return nil
 }

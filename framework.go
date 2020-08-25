@@ -1,18 +1,3 @@
-// Code generated for package main by go-bindata DO NOT EDIT. (@generated)
-// sources:
-// framework/commands/console.go
-// framework/config/app.go
-// framework/database/data/migrations_map.go
-// framework/database/migrations/2006_01_02_15_04_05_create_users_table.go
-// framework/database/seeds/seeder.go
-// framework/http/controllers/user.go
-// framework/http/requests/user.go
-// framework/main.go
-// framework/models/user.go
-// framework/resources/views/users/index.go
-// framework/routes/api.go
-// framework/routes/web.go
-// framework/services/user.go
 package main
 
 import (
@@ -20,14 +5,10 @@ import (
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
-	"os"
-	"path/filepath"
 	"strings"
-	"time"
 )
 
-func bindataRead(data []byte, name string) ([]byte, error) {
+func bindata_read(data []byte, name string) ([]byte, error) {
 	gz, err := gzip.NewReader(bytes.NewBuffer(data))
 	if err != nil {
 		return nil, fmt.Errorf("Read %q: %v", name, err)
@@ -35,318 +16,121 @@ func bindataRead(data []byte, name string) ([]byte, error) {
 
 	var buf bytes.Buffer
 	_, err = io.Copy(&buf, gz)
-	clErr := gz.Close()
+	gz.Close()
 
 	if err != nil {
 		return nil, fmt.Errorf("Read %q: %v", name, err)
-	}
-	if clErr != nil {
-		return nil, err
 	}
 
 	return buf.Bytes(), nil
 }
 
-type asset struct {
-	bytes []byte
-	info  os.FileInfo
-}
+var _commands_console_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x48\xce\xcf\xcd\x4d\xcc\x4b\x29\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\x02\x02\x00\x00\xff\xff\x23\xdd\xbf\x0c\x27\x00\x00\x00")
 
-type bindataFileInfo struct {
-	name    string
-	size    int64
-	mode    os.FileMode
-	modTime time.Time
-}
-
-// Name return file name
-func (fi bindataFileInfo) Name() string {
-	return fi.name
-}
-
-// Size return file size
-func (fi bindataFileInfo) Size() int64 {
-	return fi.size
-}
-
-// Mode return file mode
-func (fi bindataFileInfo) Mode() os.FileMode {
-	return fi.mode
-}
-
-// Mode return file modify time
-func (fi bindataFileInfo) ModTime() time.Time {
-	return fi.modTime
-}
-
-// IsDir return file whether a directory
-func (fi bindataFileInfo) IsDir() bool {
-	return fi.mode&os.ModeDir != 0
-}
-
-// Sys return file is sys mode
-func (fi bindataFileInfo) Sys() interface{} {
-	return nil
-}
-
-var _commandsConsoleGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x48\xce\xcf\xcd\x4d\xcc\x4b\x29\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\x05\x04\x00\x00\xff\xff\xa9\x25\xec\x49\x23\x00\x00\x00")
-
-func commandsConsoleGoBytes() ([]byte, error) {
-	return bindataRead(
-		_commandsConsoleGo,
+func commands_console_go() ([]byte, error) {
+	return bindata_read(
+		_commands_console_go,
 		"commands/console.go",
 	)
 }
 
-func commandsConsoleGo() (*asset, error) {
-	bytes, err := commandsConsoleGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _config_app_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x48\xce\xcf\x4b\xcb\x4c\xe7\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\x02\x02\x00\x00\xff\xff\x91\x7d\x14\x9c\x25\x00\x00\x00")
 
-	info := bindataFileInfo{name: "commands/console.go", size: 35, mode: os.FileMode(438), modTime: time.Unix(1592100146, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _configAppGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x48\xce\xcf\x4b\xcb\x4c\xe7\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\x05\x04\x00\x00\xff\xff\x3f\xe5\xdc\xe6\x21\x00\x00\x00")
-
-func configAppGoBytes() ([]byte, error) {
-	return bindataRead(
-		_configAppGo,
+func config_app_go() ([]byte, error) {
+	return bindata_read(
+		_config_app_go,
 		"config/app.go",
 	)
 }
 
-func configAppGo() (*asset, error) {
-	bytes, err := configAppGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _database_data_users_json = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x8a\xe6\xe5\x8a\x05\x04\x00\x00\xff\xff\x2f\x01\xa5\xda\x04\x00\x00\x00")
 
-	info := bindataFileInfo{name: "config/app.go", size: 33, mode: os.FileMode(438), modTime: time.Unix(1592100146, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _databaseDataUsersJson = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x8a\xe6\x8a\x05\x04\x00\x00\xff\xff\x80\xdd\x9d\x70\x03\x00\x00\x00")
-
-func databaseDataUsersJsonBytes() ([]byte, error) {
-	return bindataRead(
-		_databaseDataUsersJson,
-		"database/data/migrations_map.go",
+func database_data_users_json() ([]byte, error) {
+	return bindata_read(
+		_database_data_users_json,
+		"database/data/users.json",
 	)
 }
 
-func databaseDataUsersJson() (*asset, error) {
-	bytes, err := databaseDataUsersJsonBytes()
-	if err != nil {
-		return nil, err
-	}
+var _database_seeds_seeder_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x4e\x4d\x4d\x29\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\xf2\x72\x01\x02\x00\x00\xff\xff\xbc\x9c\x32\x6e\x26\x00\x00\x00")
 
-	info := bindataFileInfo{name: "database/data/migrations_map.go", size: 3, mode: os.FileMode(438), modTime: time.Unix(1592100146, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _databaseMigrations2006_01_02_15_04_05__create_users_tableGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\xc8\xcd\x4c\x2f\x4a\x2c\xc9\xcc\xcf\x2b\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\x05\x04\x00\x00\xff\xff\xae\xc1\x74\x84\x25\x00\x00\x00")
-
-func databaseMigrations2006_01_02_15_04_05__create_users_tableGoBytes() ([]byte, error) {
-	return bindataRead(
-		_databaseMigrations2006_01_02_15_04_05__create_users_tableGo,
-		"database/migrations/2006_01_02_15_04_05_create_users_table.go",
-	)
-}
-
-func databaseMigrations2006_01_02_15_04_05__create_users_tableGo() (*asset, error) {
-	bytes, err := databaseMigrations2006_01_02_15_04_05__create_users_tableGoBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "database/migrations/2006_01_02_15_04_05_create_users_table.go", size: 37, mode: os.FileMode(438), modTime: time.Unix(1592100558, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _databaseSeedsSeederGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x4e\x4d\x4d\x29\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\xe5\x02\x04\x00\x00\xff\xff\x3f\x03\x45\x76\x21\x00\x00\x00")
-
-func databaseSeedsSeederGoBytes() ([]byte, error) {
-	return bindataRead(
-		_databaseSeedsSeederGo,
+func database_seeds_seeder_go() ([]byte, error) {
+	return bindata_read(
+		_database_seeds_seeder_go,
 		"database/seeds/seeder.go",
 	)
 }
 
-func databaseSeedsSeederGo() (*asset, error) {
-	bytes, err := databaseSeedsSeederGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _http_controllers_user_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x48\xce\xcf\x2b\x29\xca\xcf\xc9\x49\x2d\x2a\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\xa8\xe6\xe5\xe2\xe4\xe5\xaa\xe5\xe5\x02\x04\x00\x00\xff\xff\x5c\x97\xf4\xc6\x2c\x00\x00\x00")
 
-	info := bindataFileInfo{name: "database/seeds/seeder.go", size: 33, mode: os.FileMode(438), modTime: time.Unix(1592100146, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _httpControllersUserGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x48\xce\xcf\x2b\x29\xca\xcf\xc9\x49\x2d\x2a\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\xa8\xe6\xe2\xe4\xaa\xe5\x02\x04\x00\x00\xff\xff\x5c\xf4\x43\xb6\x27\x00\x00\x00")
-
-func httpControllersUserGoBytes() ([]byte, error) {
-	return bindataRead(
-		_httpControllersUserGo,
+func http_controllers_user_go() ([]byte, error) {
+	return bindata_read(
+		_http_controllers_user_go,
 		"http/controllers/user.go",
 	)
 }
 
-func httpControllersUserGo() (*asset, error) {
-	bytes, err := httpControllersUserGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _http_requests_user_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x4a\x2d\x2c\x4d\x2d\x2e\x29\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\xf2\x72\x01\x02\x00\x00\xff\xff\x11\x49\x4d\x94\x29\x00\x00\x00")
 
-	info := bindataFileInfo{name: "http/controllers/user.go", size: 39, mode: os.FileMode(438), modTime: time.Unix(1592100558, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _httpRequestsUserGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x4a\x2d\x2c\x4d\x2d\x2e\x29\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\xe5\x02\x04\x00\x00\xff\xff\xcf\x33\x02\x63\x24\x00\x00\x00")
-
-func httpRequestsUserGoBytes() ([]byte, error) {
-	return bindataRead(
-		_httpRequestsUserGo,
+func http_requests_user_go() ([]byte, error) {
+	return bindata_read(
+		_http_requests_user_go,
 		"http/requests/user.go",
 	)
 }
 
-func httpRequestsUserGo() (*asset, error) {
-	bytes, err := httpRequestsUserGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _main_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x34\x8c\x31\x8e\xc3\x20\x10\x45\x6b\x90\xb8\xc3\x2c\x15\x6e\x70\xbf\x92\xdb\xad\xf6\x12\x2c\x8c\xf1\x6c\x30\x63\xe1\xb1\x95\x28\xf2\xdd\x23\x22\xa5\xfd\xef\xbf\xb7\x85\x78\x0b\x19\x61\x0d\x54\x8d\x36\x9a\xd6\x8d\x9b\x80\x33\x5a\xd9\x4c\xb2\x1c\x7f\x3e\xf2\x3a\xfe\xf3\xc2\x63\xe6\xc4\x82\xf5\xb4\x1d\x16\xce\xd6\xe8\xa1\x3b\xf3\x51\xe3\x3b\xe0\x06\x80\x67\x5f\x14\xb6\x06\xdf\x13\x7c\x0c\xff\xcb\x21\xb9\xc1\x68\x45\x33\x74\xf6\x35\x41\xa5\xd2\xcf\x4a\x15\xce\xfe\x27\x48\x28\xce\xca\x82\xd0\x98\x05\x12\x35\x8c\xc2\xed\x01\x89\x71\x87\xca\x02\x78\xa7\x5d\xc0\x63\x3d\x61\xa6\x82\xb6\xd7\x2e\xa3\xaf\x57\x00\x00\x00\xff\xff\x7a\xe4\x3a\xdf\xc2\x00\x00\x00")
 
-	info := bindataFileInfo{name: "http/requests/user.go", size: 36, mode: os.FileMode(438), modTime: time.Unix(1592100558, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _mainGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x34\xcb\x31\x4e\x03\x31\x10\x46\xe1\xda\x73\x8a\x1f\x57\x76\xe3\xf4\x48\x69\xa9\xb8\x84\xb1\x67\xbd\x03\x5e\x4f\xe4\x4c\x56\xa0\xd5\xde\x1d\x81\x94\xfa\xbd\xef\x96\xcb\x57\x6e\x8c\x2d\xcb\x20\x92\xed\xa6\xd3\x10\xc8\xf9\x26\xb6\x3e\x3e\x52\xd1\xed\xf2\xa9\xab\x5e\x9a\x56\x35\x1e\xbb\x27\xe7\xbb\x36\x4f\x91\x68\x79\x8c\xf2\x2f\x43\x04\x0e\x22\xc7\x73\xe2\xf5\x8a\xe7\x9b\xde\x35\xd7\x10\xc9\xc9\x82\xbf\xf4\x72\xc5\x90\x8e\x83\x9c\xeb\xda\xd2\x5b\xb6\xdc\x83\xb7\x95\x31\x55\x0d\x55\x26\x17\xd3\xf9\x83\xaa\x7c\xc7\x50\x03\x7f\xcb\xdd\x90\x78\xec\x58\xa4\xb3\x8f\xe4\x4e\x3a\x7f\x03\x00\x00\xff\xff\x28\xec\xa2\xd9\xb5\x00\x00\x00")
-
-func mainGoBytes() ([]byte, error) {
-	return bindataRead(
-		_mainGo,
+func main_go() ([]byte, error) {
+	return bindata_read(
+		_main_go,
 		"main.go",
 	)
 }
 
-func mainGo() (*asset, error) {
-	bytes, err := mainGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _models_user_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x6c\x8e\xbd\x52\x2b\x31\x0c\x85\x6b\x7b\xc6\xef\xa0\x71\xb5\x7b\x8b\x75\x7f\x3b\x86\x34\x14\x50\x25\x35\x71\xd6\xca\xae\xc9\xfa\x67\x64\xb9\x58\x18\xde\x9d\x51\xa0\xa0\x40\xa5\xce\xf9\xa4\xaf\xfa\xf9\xe6\x17\x84\x54\x02\x6e\xcd\x68\xa3\x63\xaa\x85\x18\x06\xa3\x95\x5d\x22\xaf\xfd\x32\xcd\x25\xb9\xb7\x98\xdf\xd7\xee\x96\x42\xc9\x4a\xc4\x31\xa1\x35\x7a\x14\x84\xf7\x8a\x70\x6a\x48\xd0\x98\xfa\xcc\xf0\x61\xb4\x7a\x3a\xc0\xcf\xf4\x98\x19\xce\x42\xfe\xb7\x95\x62\xf2\xb4\xbf\xde\x70\xb7\x67\x61\x95\x73\xe0\x43\x80\xc2\x2b\x12\x5c\x23\x6e\xa1\x19\xad\xa4\x3d\x3d\x8b\xd4\xbd\xf4\x48\xe8\x19\xc3\x03\x83\xfc\x9d\x8e\x31\xa1\xd1\xea\x54\xc3\x1f\x5b\xe7\xe0\x80\x1b\x7e\x07\xff\x7e\x25\x9f\x72\xea\xda\xf3\x0c\x83\xc8\x8e\x70\xf4\x97\x0d\x5f\x7c\xc2\x61\x14\xf3\x98\x17\x31\x37\x5a\x11\x72\xa7\x0c\xb6\x37\xa4\x66\xef\xe4\x57\x00\x00\x00\xff\xff\xcd\x23\x89\x44\x29\x01\x00\x00")
 
-	info := bindataFileInfo{name: "main.go", size: 181, mode: os.FileMode(438), modTime: time.Unix(1592034921, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _modelsUserGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\xc8\xcd\x4f\x49\xcd\x29\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\xe5\x02\x04\x00\x00\xff\xff\x5d\x2f\xe7\x81\x22\x00\x00\x00")
-
-func modelsUserGoBytes() ([]byte, error) {
-	return bindataRead(
-		_modelsUserGo,
+func models_user_go() ([]byte, error) {
+	return bindata_read(
+		_models_user_go,
 		"models/user.go",
 	)
 }
 
-func modelsUserGo() (*asset, error) {
-	bytes, err := modelsUserGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _resources_views_users_index_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x2d\x4e\x2d\x2a\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\xf2\x72\x01\x02\x00\x00\xff\xff\x82\x7d\xf4\x12\x26\x00\x00\x00")
 
-	info := bindataFileInfo{name: "models/user.go", size: 34, mode: os.FileMode(438), modTime: time.Unix(1592100558, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _resourcesViewsUsersIndexGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x2d\x4e\x2d\x2a\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\xe5\x02\x04\x00\x00\xff\xff\x35\x52\xce\x09\x21\x00\x00\x00")
-
-func resourcesViewsUsersIndexGoBytes() ([]byte, error) {
-	return bindataRead(
-		_resourcesViewsUsersIndexGo,
+func resources_views_users_index_go() ([]byte, error) {
+	return bindata_read(
+		_resources_views_users_index_go,
 		"resources/views/users/index.go",
 	)
 }
 
-func resourcesViewsUsersIndexGo() (*asset, error) {
-	bytes, err := resourcesViewsUsersIndexGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _routes_api_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\xca\x2f\x2d\x49\x2d\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\xf2\x72\x01\x02\x00\x00\xff\xff\xeb\xb2\xf8\x04\x27\x00\x00\x00")
 
-	info := bindataFileInfo{name: "resources/views/users/index.go", size: 33, mode: os.FileMode(438), modTime: time.Unix(1592100934, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _routesApiGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\xca\x2f\x2d\x49\x2d\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\xe5\x02\x04\x00\x00\xff\xff\xfd\x16\x7b\x6c\x22\x00\x00\x00")
-
-func routesApiGoBytes() ([]byte, error) {
-	return bindataRead(
-		_routesApiGo,
+func routes_api_go() ([]byte, error) {
+	return bindata_read(
+		_routes_api_go,
 		"routes/api.go",
 	)
 }
 
-func routesApiGo() (*asset, error) {
-	bytes, err := routesApiGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _routes_web_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\xca\x2f\x2d\x49\x2d\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\x06\x89\xd4\x02\x02\x00\x00\xff\xff\x95\x51\x7a\x28\x25\x00\x00\x00")
 
-	info := bindataFileInfo{name: "routes/api.go", size: 34, mode: os.FileMode(438), modTime: time.Unix(1592100934, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _routesWebGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\xca\x2f\x2d\x49\x2d\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\xcc\xcb\x2c\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\x05\x04\x00\x00\xff\xff\x78\x60\xe9\x72\x21\x00\x00\x00")
-
-func routesWebGoBytes() ([]byte, error) {
-	return bindataRead(
-		_routesWebGo,
+func routes_web_go() ([]byte, error) {
+	return bindata_read(
+		_routes_web_go,
 		"routes/web.go",
 	)
 }
 
-func routesWebGo() (*asset, error) {
-	bytes, err := routesWebGoBytes()
-	if err != nil {
-		return nil, err
-	}
+var _services_user_go = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x4e\x2d\x2a\xcb\x4c\x4e\x2d\xe6\xe5\xe2\xe5\x4a\x2b\xcd\x4b\x56\xc8\x4d\xcc\xcc\xd1\xd0\x54\x50\xa8\x06\x89\xd4\xf2\x72\x01\x02\x00\x00\xff\xff\x93\xf9\x9e\x49\x29\x00\x00\x00")
 
-	info := bindataFileInfo{name: "routes/web.go", size: 33, mode: os.FileMode(438), modTime: time.Unix(1592100934, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
-}
-
-var _servicesUserGo = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\x48\x4c\xce\x4e\x4c\x4f\x55\x28\x4e\x2d\x2a\xcb\x4c\x4e\x2d\xe6\xe2\x4a\x2b\xcd\x4b\x56\xc8\x4d\xcc\xcc\xd1\xd0\x54\x50\xa8\xe6\xe2\xaa\xe5\x02\x04\x00\x00\xff\xff\xae\xab\xff\x27\x24\x00\x00\x00")
-
-func servicesUserGoBytes() ([]byte, error) {
-	return bindataRead(
-		_servicesUserGo,
+func services_user_go() ([]byte, error) {
+	return bindata_read(
+		_services_user_go,
 		"services/user.go",
 	)
-}
-
-func servicesUserGo() (*asset, error) {
-	bytes, err := servicesUserGoBytes()
-	if err != nil {
-		return nil, err
-	}
-
-	info := bindataFileInfo{name: "services/user.go", size: 36, mode: os.FileMode(438), modTime: time.Unix(1592100934, 0)}
-	a := &asset{bytes: bytes, info: info}
-	return a, nil
 }
 
 // Asset loads and returns the asset for the given name.
@@ -355,39 +139,9 @@ func servicesUserGo() (*asset, error) {
 func Asset(name string) ([]byte, error) {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	if f, ok := _bindata[cannonicalName]; ok {
-		a, err := f()
-		if err != nil {
-			return nil, fmt.Errorf("Asset %s can't read by error: %v", name, err)
-		}
-		return a.bytes, nil
+		return f()
 	}
 	return nil, fmt.Errorf("Asset %s not found", name)
-}
-
-// MustAsset is like Asset but panics when Asset would return an error.
-// It simplifies safe initialization of global variables.
-func MustAsset(name string) []byte {
-	a, err := Asset(name)
-	if err != nil {
-		panic("asset: Asset(" + name + "): " + err.Error())
-	}
-
-	return a
-}
-
-// AssetInfo loads and returns the asset info for the given name.
-// It returns an error if the asset could not be found or
-// could not be loaded.
-func AssetInfo(name string) (os.FileInfo, error) {
-	cannonicalName := strings.Replace(name, "\\", "/", -1)
-	if f, ok := _bindata[cannonicalName]; ok {
-		a, err := f()
-		if err != nil {
-			return nil, fmt.Errorf("AssetInfo %s can't read by error: %v", name, err)
-		}
-		return a.info, nil
-	}
-	return nil, fmt.Errorf("AssetInfo %s not found", name)
 }
 
 // AssetNames returns the names of the assets.
@@ -400,22 +154,20 @@ func AssetNames() []string {
 }
 
 // _bindata is a table, holding each asset generator, mapped to its name.
-var _bindata = map[string]func() (*asset, error){
-	"commands/console.go":                                            commandsConsoleGo,
-	"config/app.go":                                                  configAppGo,
-	"database/data/migrations_map.go":                                       databaseDataUsersJson,
-	"database/migrations/2006_01_02_15_04_05_create_users_table.go": databaseMigrations2006_01_02_15_04_05__create_users_tableGo,
-	"database/seeds/seeder.go":                                       databaseSeedsSeederGo,
-	"http/controllers/user.go":                                       httpControllersUserGo,
-	"http/requests/user.go":                                          httpRequestsUserGo,
-	"main.go":                                                        mainGo,
-	"models/user.go":                                                 modelsUserGo,
-	"resources/views/users/index.go":                                 resourcesViewsUsersIndexGo,
-	"routes/api.go":                                                  routesApiGo,
-	"routes/web.go":                                                  routesWebGo,
-	"services/user.go":                                               servicesUserGo,
+var _bindata = map[string]func() ([]byte, error){
+	"commands/console.go": commands_console_go,
+	"config/app.go": config_app_go,
+	"database/data/users.json": database_data_users_json,
+	"database/seeds/seeder.go": database_seeds_seeder_go,
+	"http/controllers/user.go": http_controllers_user_go,
+	"http/requests/user.go": http_requests_user_go,
+	"main.go": main_go,
+	"models/user.go": models_user_go,
+	"resources/views/users/index.go": resources_views_users_index_go,
+	"routes/api.go": routes_api_go,
+	"routes/web.go": routes_web_go,
+	"services/user.go": services_user_go,
 }
-
 // AssetDir returns the file names below a certain
 // directory embedded in the file by go-bindata.
 // For example if you run go-bindata on data/... and data contains the
@@ -445,106 +197,39 @@ func AssetDir(name string) ([]string, error) {
 		return nil, fmt.Errorf("Asset %s not found", name)
 	}
 	rv := make([]string, 0, len(node.Children))
-	for childName := range node.Children {
-		rv = append(rv, childName)
+	for name := range node.Children {
+		rv = append(rv, name)
 	}
 	return rv, nil
 }
 
-type bintree struct {
-	Func     func() (*asset, error)
-	Children map[string]*bintree
+type _bintree_t struct {
+	Func func() ([]byte, error)
+	Children map[string]*_bintree_t
 }
-
-var _bintree = &bintree{nil, map[string]*bintree{
-	"commands": &bintree{nil, map[string]*bintree{
-		"console.go": &bintree{commandsConsoleGo, map[string]*bintree{}},
+var _bintree = &_bintree_t{nil, map[string]*_bintree_t{
+	"commands/console.go": &_bintree_t{commands_console_go, map[string]*_bintree_t{
 	}},
-	"config": &bintree{nil, map[string]*bintree{
-		"app.go": &bintree{configAppGo, map[string]*bintree{}},
+	"config/app.go": &_bintree_t{config_app_go, map[string]*_bintree_t{
 	}},
-	"database": &bintree{nil, map[string]*bintree{
-		"data": &bintree{nil, map[string]*bintree{
-			"migrations_map.go": &bintree{databaseDataUsersJson, map[string]*bintree{}},
-		}},
-		"migrations": &bintree{nil, map[string]*bintree{
-			"2006_01_02_15_04_05_create_users_table.go": &bintree{databaseMigrations2006_01_02_15_04_05__create_users_tableGo, map[string]*bintree{}},
-		}},
-		"seeds": &bintree{nil, map[string]*bintree{
-			"seeder.go": &bintree{databaseSeedsSeederGo, map[string]*bintree{}},
-		}},
+	"database/data/users.json": &_bintree_t{database_data_users_json, map[string]*_bintree_t{
 	}},
-	"http": &bintree{nil, map[string]*bintree{
-		"controllers": &bintree{nil, map[string]*bintree{
-			"user.go": &bintree{httpControllersUserGo, map[string]*bintree{}},
-		}},
-		"requests": &bintree{nil, map[string]*bintree{
-			"user.go": &bintree{httpRequestsUserGo, map[string]*bintree{}},
-		}},
+	"database/seeds/seeder.go": &_bintree_t{database_seeds_seeder_go, map[string]*_bintree_t{
 	}},
-	"main.go": &bintree{mainGo, map[string]*bintree{}},
-	"models": &bintree{nil, map[string]*bintree{
-		"user.go": &bintree{modelsUserGo, map[string]*bintree{}},
+	"http/controllers/user.go": &_bintree_t{http_controllers_user_go, map[string]*_bintree_t{
 	}},
-	"resources": &bintree{nil, map[string]*bintree{
-		"views": &bintree{nil, map[string]*bintree{
-			"users": &bintree{nil, map[string]*bintree{
-				"index.go": &bintree{resourcesViewsUsersIndexGo, map[string]*bintree{}},
-			}},
-		}},
+	"http/requests/user.go": &_bintree_t{http_requests_user_go, map[string]*_bintree_t{
 	}},
-	"routes": &bintree{nil, map[string]*bintree{
-		"api.go": &bintree{routesApiGo, map[string]*bintree{}},
-		"web.go": &bintree{routesWebGo, map[string]*bintree{}},
+	"main.go": &_bintree_t{main_go, map[string]*_bintree_t{
 	}},
-	"services": &bintree{nil, map[string]*bintree{
-		"user.go": &bintree{servicesUserGo, map[string]*bintree{}},
+	"models/user.go": &_bintree_t{models_user_go, map[string]*_bintree_t{
+	}},
+	"resources/views/users/index.go": &_bintree_t{resources_views_users_index_go, map[string]*_bintree_t{
+	}},
+	"routes/api.go": &_bintree_t{routes_api_go, map[string]*_bintree_t{
+	}},
+	"routes/web.go": &_bintree_t{routes_web_go, map[string]*_bintree_t{
+	}},
+	"services/user.go": &_bintree_t{services_user_go, map[string]*_bintree_t{
 	}},
 }}
-
-// RestoreAsset restores an asset under the given directory
-func RestoreAsset(dir, name string) error {
-	data, err := Asset(name)
-	if err != nil {
-		return err
-	}
-	info, err := AssetInfo(name)
-	if err != nil {
-		return err
-	}
-	err = os.MkdirAll(_filePath(dir, filepath.Dir(name)), os.FileMode(0755))
-	if err != nil {
-		return err
-	}
-	err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
-	if err != nil {
-		return err
-	}
-	err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-// RestoreAssets restores an asset under the given directory recursively
-func RestoreAssets(dir, name string) error {
-	children, err := AssetDir(name)
-	// File
-	if err != nil {
-		return RestoreAsset(dir, name)
-	}
-	// Dir
-	for _, child := range children {
-		err = RestoreAssets(dir, filepath.Join(name, child))
-		if err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-func _filePath(dir, name string) string {
-	cannonicalName := strings.Replace(name, "\\", "/", -1)
-	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
-}

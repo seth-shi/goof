@@ -1,13 +1,9 @@
 package main
 
 import (
-	"github.com/seth-shi/goof/utils"
 	"github.com/urfave/cli/v2"
+	"log"
 	"os"
-)
-
-var (
-	log = utils.GetLogInstance()
 )
 
 var (
@@ -18,7 +14,7 @@ func init() {
 
 	wd, err := os.Getwd()
 	if err != nil {
-		log.ErrorFatal("cannot get work dir")
+		log.Fatalln("cannot get work dir")
 	}
 
 	env.workDir = wd
@@ -60,6 +56,6 @@ func main() {
 	// set options
 	runError := app.Run(os.Args)
 	if runError != nil {
-		log.ErrorFatal(runError.Error())
+		log.Fatal(runError.Error())
 	}
 }
