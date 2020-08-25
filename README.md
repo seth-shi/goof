@@ -8,7 +8,8 @@
 * 初始化`gomod`
 * `go mod init xxx`
 * 安装插件
-* `go get github.com/seth-shi/goof`
+* `go get github.com/seth-shi/goof` (lib)
+* `go get github.com/seth-shi/goof/goof` (插件)
 * 初始化项目
 * `goof init`
 
